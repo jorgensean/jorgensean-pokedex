@@ -1,18 +1,14 @@
 import { Header } from "./components/Header"
 import { useGetPokemonListQuery } from "./features/pokemon/pokemonApi"
 
-
-
 const App = () => {
   const { data, isLoading, isError } = useGetPokemonListQuery()
   if (isLoading) {
     return <div>Loading</div>
   }
-
   if (isError) {
     return <div>Error</div>
   }
-
   if (!data) {
     return <div>No Pokemon found!</div>
   }

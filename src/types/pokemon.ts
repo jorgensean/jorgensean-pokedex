@@ -10,3 +10,11 @@ export interface PokemonList {
   count: number,
   results: []
 }
+
+export interface PokemonType {
+  slot: number,
+  type: {
+    name: string,
+    url: string,
+  }
+}
