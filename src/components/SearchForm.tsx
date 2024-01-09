@@ -1,10 +1,8 @@
 import React, { useState, MouseEvent, FormEvent } from "react"
+import { useGetPokemonListQuery } from "../features/pokemon/pokemonApi"
+import { Pokemon } from "../types/pokemon"
 
-interface Props {
-  pokemonList: []
-}
-
-export const SearchForm: React.FC<Props> = ( pokemonList ) => {
+export const SearchForm: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>()
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +17,7 @@ export const SearchForm: React.FC<Props> = ( pokemonList ) => {
     const div = e.target as HTMLLIElement
     setSearchTerm(div.getAttribute('data-name') as string)
   }
+  const { data } = useGetPokemonListQuery()
 
   return (
     <div className="mx-auto">
@@ -32,13 +31,22 @@ export const SearchForm: React.FC<Props> = ( pokemonList ) => {
           </button>
         </div>
         {/* autocomplete dropdown */}
-        <div className="w-full lg:w-1/3 px-6 rounded-b-xl absolute text-black text-left z-10 right-full lg:right-96 xl:right-1/3 2xl:right-1/3">
-          <ul className="ml-5 mr-12 px-3 rounded-b-xl border-r border-l border-b border-gray-400 shadow-lg bg-white">
-            <li className='capitalize w-1/2' data-name='bulbasaur' onClick={autofillSearch}>Bulbasaur</li>
-          </ul>
-        </div>
+        {data ? 
+          <div className="w-full lg:w-1/3 px-6 rounded-b-xl absolute text-black text-left z-10 right-full lg:right-96 xl:right-1/3 2xl:right-1/3">
+            <ul className="ml-5 mr-12 px-3 rounded-b-xl border-r border-l border-b border-gray-400 shadow-lg bg-white">
+              {data.results.filter((pokemon: Pokemon) => {
+                const search = searchTerm ? searchTerm.toLowerCase() : '';
+                const name = pokemon.name
+                return name !== search && search.length > 0 && name.startsWith(search)
+              })
+              .slice(0, 12)
+              .map((pokemon: Pokemon) => (
+                <li className='capitalize w-1/2 last:pb-2' data-name={pokemon.name} key={pokemon.name} onClick={autofillSearch}>{pokemon.name}</li>
+              ))}
+            </ul>
+          </div>
+        : ''}
       </form>
     </div>
-
   )
 }

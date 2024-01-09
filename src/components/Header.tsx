@@ -12,7 +12,7 @@ export const Header: React.FC<Props> = ({ data }) => {
       <h1>Pokémon Pokédex</h1>
       <h3>Pokémon database: {data.count}</h3>
       <h2 className="text-lg xl:text-2xl font-bold">Which Pokémon are you looking for?</h2>
-      <SearchForm pokemonList={data.results} />
+      <SearchForm />
     </header>
   )
 }
