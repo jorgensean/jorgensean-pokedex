@@ -1,67 +1,30 @@
-import "./App.css"
-import { Counter } from "./features/counter/Counter"
-import { Quotes } from "./features/quotes/Quotes"
-import logo from "./logo.svg"
+import { Header } from "./components/Header"
+import { useGetPokemonListQuery } from "./features/pokemon/pokemonApi"
+
+
 
 const App = () => {
+  const { data, isLoading, isError } = useGetPokemonListQuery()
+  if (isLoading) {
+    return <div>Loading</div>
+  }
+
+  if (isError) {
+    return <div>Error</div>
+  }
+
+  if (!data) {
+    return <div>No Pokemon found!</div>
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Pokémon Pokédex</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Quotes />
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://reselect.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Reselect
-          </a>
-        </span>
-      </header>
+    <div style={{ backgroundImage: 'url(/pokeball-bg.png)' }} className="w-full m-0">
+      <div className="w-full m-0 bg-filter">
+        <div className="container w-full lg:w-3/4 xl:w-3/5 2xl:w-2/3 bg-red-600 pb-8">
+          <div className="container w-full xl:w-4/5 bg-white lg:px-12 pb-8">
+            <Header data={data} />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
