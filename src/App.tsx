@@ -16,7 +16,7 @@ const App = () => {
   }
   return (
     <div style={{ backgroundImage: 'url(/pokeball-bg.png)' }} className="w-full m-0">
-      <div className="w-full m-0 bg-white bg-opactity-80">
+      <div className="w-full m-0 bg-white bg-opacity-80">
         <div className="container w-full lg:w-3/4 xl:w-3/5 2xl:w-2/3 bg-red-600 pb-8">
           <div className="container w-full xl:w-4/5 bg-white lg:px-12 pb-8">
             <Header data={data} />
