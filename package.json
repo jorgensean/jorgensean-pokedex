@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "author": "Sean Jorgensen <jorgensean@gmail.com>",
-  "description": "A Pokédex application for searching and displaying Pokémon, using the PokeAPI; project used for technical assesment for Prize Picks",
+  "description": "A Pokédex application for searching and displaying Pokémon, using the PokeAPI; project used for technical assesment for PrizePicks",
   "type": "module",
   "scripts": {
     "dev": "vite",

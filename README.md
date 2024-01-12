@@ -1,17 +1,16 @@
-# vite-template-redux
+# Pokemon Pokedex
+
+Project created using 
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/) 
+- [Redux](https://redux.dev/)
+- [TailwindCSS](https://tailwind.dev/)
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
 
 ```sh
 npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 ```
-
-## Goals
-
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
 
 ## Scripts
 

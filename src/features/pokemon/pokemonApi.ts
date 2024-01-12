@@ -1,19 +1,21 @@
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react"
-import { PokemonList } from "../../types/pokemon"
+import { Pokemon, PokemonList, PokemonSpecies } from "../../types/pokemon"
 
 function fakeLoading() {
   return new Promise((resolve) => setTimeout(resolve, 2000))
 }
 
+const baseUrl = "https://pokeapi.co/api/v2/"
+
 export const pokemonApi = createApi({
-  reducerPath: 'pokemonApi',
+  reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://pokeapi.co/api/v2/'
+    baseUrl: baseUrl
   }),
   endpoints: (builder) => ({
     getPokemonList: builder.query<PokemonList, void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBaseQuery) {
-        const countResult = await fetchWithBaseQuery('/pokemon')
+        const countResult = await fetchWithBaseQuery("/pokemon")
         if (countResult.error) {
           return { error: countResult.error as FetchBaseQueryError }
         }
@@ -25,10 +27,13 @@ export const pokemonApi = createApi({
           : { error: result.error as FetchBaseQueryError }
         },
     }),
-    getPokemonByName: builder.query({
+    getPokemonByName: builder.query<Pokemon, string>({
       query: (name) => `/pokemon/${name}`
+    }),
+    getPokemonSpecies: builder.query<PokemonSpecies, string>({      
+      query: (url) => url.slice(url.indexOf(baseUrl))
     })
   })
 })
 
-export const { useGetPokemonListQuery, useGetPokemonByNameQuery } = pokemonApi
+export const { useGetPokemonListQuery, useGetPokemonByNameQuery, useGetPokemonSpeciesQuery } = pokemonApi

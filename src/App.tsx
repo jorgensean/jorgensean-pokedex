@@ -35,26 +35,36 @@ const App = () => {
                 <PokemonDetail pokemon={selectedPokemon} />
               </div>
             ) : (
-              <div className="container w-full p-4 md:px-14 pt-2">
-                <div className="flex justify-space-between grid gap-1 md:gap-2 grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-                  {searchQuery ? (
-                    data.results.filter((pokemon: PokemonEntry) => {
-                      return searchQuery.length > 0 && pokemon.name.includes(searchQuery)
-                    })
-                    .map((pokemon: PokemonEntry) => (
-                      <div className="cursor-pointer" key={pokemon.name} onClick={() => dispatch(setTarget({name: pokemon.name}))} data-name={pokemon.name}>
-                        <PokemonTile pokemon={pokemon} />
-                      </div>
-                    ))
-                  ) : (
-                    data.results.slice(91, 104).map((pokemon: PokemonEntry) => (
-                      <div className="cursor-pointer" key={pokemon.name} onClick={() => dispatch(setTarget({name: pokemon.name}))} data-name={pokemon.name}>
-                        <PokemonTile pokemon={pokemon} />
-                      </div>
-                    ))
-                  )}
+              <>
+                {searchQuery ? (
+                  <div className="container w-full xl:w-full px-14">
+                    <div className="mx-auto bg-blue-200 my-2 p-4 pt-2 rounded">
+                      <p className="inline-block mt-1"><span className="">Showing Results for '{searchQuery}'</span></p>
+                      <button onClick={() => dispatch(clearSearch())} className="inline mt-0.5 btn float-right bg-gray-500">Reset</button>
+                    </div>
+                  </div>
+                ) : ''}
+                <div className="container w-full p-4 md:px-14 pt-2">
+                  <div className="flex justify-space-between grid gap-1 md:gap-2 grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                    {searchQuery ? (
+                      data.results.filter((pokemon: PokemonEntry) => {
+                        return searchQuery.length > 0 && pokemon.name.includes(searchQuery)
+                      })
+                      .map((pokemon: PokemonEntry) => (
+                        <div className="cursor-pointer" key={pokemon.name} onClick={() => dispatch(setTarget({name: pokemon.name}))} data-name={pokemon.name}>
+                          <PokemonTile pokemon={pokemon} />
+                        </div>
+                      ))
+                    ) : (
+                      data.results.slice(0, 24).map((pokemon: PokemonEntry) => (
+                        <div className="cursor-pointer" key={pokemon.name} onClick={() => dispatch(setTarget({name: pokemon.name}))} data-name={pokemon.name}>
+                          <PokemonTile pokemon={pokemon} />
+                        </div>
+                      ))
+                    )}
+                  </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         </div>
