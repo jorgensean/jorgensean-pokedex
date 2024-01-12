@@ -4,7 +4,19 @@
 
 @layer components {
   h1 {
-    @apply text-4xl pb-2 font-bold;
+    @apply text-4xl pb-1 font-bold;
+  }
+  h3 {
+    @apply text-lg my-2 font-medium;
+  }
+  .btn {
+    @apply font-bold py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply bg-blue-500 text-white;
+  }
+  .btn-blue:hover {
+    @apply bg-blue-700;
   }
   /* Tailwind doesn't have outset/inset support */
   .pokemon-tile {
@@ -12,5 +24,10 @@
   }
   .pokemon-tile:hover {
     border-style: inset;
+  }
+  /* Set Overflow to clip instead of visible, use clip-margin */
+  .overflow-clip {
+    overflow: clip;
+    overflow-clip-margin: border-box;
   }
 }

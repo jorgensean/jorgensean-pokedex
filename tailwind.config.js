@@ -6,6 +6,9 @@ export default {
       center: true,
     },
     extend: {
+      rotate: {
+          '30': '30deg',
+        },
       colors: {
         'normal': '#a8a77a',
         'bug': '#a6b91a',
@@ -28,9 +31,12 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-3d'),
+  ],
   safelist: [
     {pattern: /bg-./},
+    {pattern: /text-./},
   ],
 }
 
