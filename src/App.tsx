@@ -37,10 +37,10 @@ const App = () => {
             ) : (
               <>
                 {searchQuery ? (
-                  <div className="container w-full xl:w-full px-14">
+                  <div className="container w-full xl:w-3/4">
                     <div className="mx-auto bg-blue-200 my-2 p-4 pt-2 rounded">
-                      <p className="inline-block mt-1"><span className="">Showing Results for '{searchQuery}'</span></p>
-                      <button onClick={() => dispatch(clearSearch())} className="inline mt-0.5 btn float-right bg-gray-500">Reset</button>
+                      <p className="inline mt-4"><span className="pt-2">Showing Results for '{searchQuery}'</span></p>
+                      <button onClick={() => dispatch(clearSearch())} className="btn float-right">Reset</button>
                     </div>
                   </div>
                 ) : ''}
@@ -56,7 +56,7 @@ const App = () => {
                         </div>
                       ))
                     ) : (
-                      data.results.slice(0, 24).map((pokemon: PokemonEntry) => (
+                      data.results.slice(91, 104).map((pokemon: PokemonEntry) => (
                         <div className="cursor-pointer" key={pokemon.name} onClick={() => dispatch(setTarget({name: pokemon.name}))} data-name={pokemon.name}>
                           <PokemonTile pokemon={pokemon} />
                         </div>

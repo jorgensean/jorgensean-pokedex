@@ -22,9 +22,6 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
       return getDefaultMiddleware().concat(pokemonApi.middleware)
     },
     preloadedState,
-    devTools: { 
-      stateSanitizer: (state) => state ? { ...state, data: '<<long_blob>>' } : state
-    },
   })
   // configure listeners using the provided defaults
   // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
