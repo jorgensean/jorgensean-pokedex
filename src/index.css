@@ -10,7 +10,13 @@
     @apply text-lg my-2 font-medium;
   }
   .btn {
-    @apply font-bold py-2 px-4 rounded align-middle text-center font-bold uppercase text-xs rounded-lg bg-gray-900 text-white;
+    @apply font-bold rounded align-middle text-center font-bold uppercase text-xs rounded-lg bg-gray-900 text-white;
+  }
+  .btn-md {
+    @apply py-2 px-3;
+  }
+  .btn-sm {
+    @apply py-0.5 px-2 font-medium;
   }
   /* Tailwind doesn't have outset/inset support */
   .pokemon-tile {

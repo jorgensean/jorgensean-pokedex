@@ -1,13 +1,18 @@
 import React from "react"
+
+import { useAppDispatch, useAppSelector } from "../app/hooks"
+
 import { useGetPokemonByNameQuery } from "../features/pokemon/pokemonApi"
 import { PokemonEntry, PokemonStats, PokemonType } from "../types/pokemon"
 import { PokemonDescription } from "./PokemonDescription"
+import { setTarget, unsetTarget, selectedPokemonValue } from "../features/pokemon/selectedPokemonSlice"
 
 type Props = {
   pokemon: PokemonEntry
 };
 
 export const PokemonDetail: React.FC<Props> = ({ pokemon }: Props) => {
+  const dispatch = useAppDispatch()
   const { data, isLoading, isError } = useGetPokemonByNameQuery(pokemon.name);
 
   if (isLoading) {
@@ -23,7 +28,10 @@ export const PokemonDetail: React.FC<Props> = ({ pokemon }: Props) => {
   
   return (
     <div className="container w-full">
-      <div className="rounded-t-xl text-center w-full">
+      
+      <div className="rounded-t-xl text-center w-full relative">
+      <button className="text-4xl absolute z-10 top-2 right-6 font-bold text-white cursor-pointer"
+        onClick={() => dispatch(unsetTarget())}>&times;</button>
         <div className="bg-amber-300 perspective-250 rounded-xl overflow-hidden w-full py-4">
           <div className={primaryType}>
             <span className="inline-block subpixel-antialiased translate-y-1 pb-3 font-bold">{data.name}</span>

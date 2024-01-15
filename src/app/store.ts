@@ -4,10 +4,11 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { pokemonApi } from "../features/pokemon/pokemonApi"
 import { selectedPokemonSlice } from "../features/pokemon/selectedPokemonSlice"
 import { pokemonSearchSlice } from "../features/pokemon/pokemonSearchSlice"
+import { pokemonSearchHistorySlice } from "../features/pokemon/pokemonSearchHistorySlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(pokemonApi, selectedPokemonSlice, pokemonSearchSlice)
+const rootReducer = combineSlices(pokemonApi, selectedPokemonSlice, pokemonSearchSlice, pokemonSearchHistorySlice)
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 
