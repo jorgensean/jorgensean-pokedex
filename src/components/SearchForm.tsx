@@ -18,17 +18,18 @@ export const SearchForm: React.FC = () => {
     setSearchTerm(e.target.value)
     setAllowAutocomplete(true)
   }
-  const formSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const formSubmit = (e: any) => {
     setAllowAutocomplete(false)
     if (selectedPokemon) {
       dispatch(unsetTarget())
     }
-    if (e.target.elements.searchInput.value) {
+    if ((e.target.elements.searchInput.value)) {
       dispatch(setSearchQuery(e.target.elements.searchInput.value))
     } else {
-      
+      setSearchTerm(undefined)
       dispatch(clearSearch())
     }
+    setSearchTerm(undefined)
     e.preventDefault()
   }
   const autofillSearch = (e: MouseEvent<HTMLLIElement>) => {

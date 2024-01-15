@@ -26,7 +26,7 @@ export const PokemonDetail: React.FC<Props> = ({ pokemon }: Props) => {
       <div className="rounded-t-xl text-center w-full">
         <div className="bg-amber-300 perspective-250 rounded-xl overflow-hidden w-full py-4">
           <div className={primaryType}>
-            <span className="inline-block subpixel-antialiased translate-y-2 pb-3 font-bold">{data.name}</span>
+            <span className="inline-block subpixel-antialiased translate-y-1 pb-3 font-bold">{data.name}</span>
             {data.sprites.other.showdown.front_default && (
               <img className="inline ml-8 -translate-y-1 max-h-24 drop-shadow-2xl" src={data.sprites.other.showdown.front_default} alt={data.name} />
             )}
@@ -70,9 +70,9 @@ export const PokemonDetail: React.FC<Props> = ({ pokemon }: Props) => {
         ) : ""}
         </div>
         <div className="grow"></div>
-        <div className="flex-none w-1/3 rounded-lg bg-indigo-400">
-          {data.height && (<div className="text-white text-lg capitalize">Height:</div>)}
-          {data.weight && ()}
+        <div className="flex-none w-1/3 rounded-lg font-semibold bg-indigo-400 p-4">
+          {data.height && (<div className="text-white text-lg capitalize">Height: <span>{data.height}</span></div>)}
+          {data.weight && (<div className="text-white text-lg capitalize">Weight: <span>{data.weight}</span></div>)}
         </div>
       </div>
     </div>
