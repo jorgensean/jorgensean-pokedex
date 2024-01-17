@@ -1,21 +1,20 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import { PokemonEntry } from "../../types/pokemon"
+import type { PokemonEntry } from "../../types/pokemon"
 
 export interface SelectedPokemonSliceState {
-  value: PokemonEntry | undefined,
+  value: PokemonEntry | undefined
 }
 
 const initialState: SelectedPokemonSliceState = {
-  value: undefined
+  value: undefined,
 }
 
 export const selectedPokemonSlice = createAppSlice({
   name: "selectedPokemon",
   initialState,
   reducers: create => ({
-    setTarget: create.reducer(
-      (state, action: PayloadAction<PokemonEntry>) => {
+    setTarget: create.reducer((state, action: PayloadAction<PokemonEntry>) => {
       state.value = action.payload
     }),
     unsetTarget: create.reducer(state => {

@@ -1,4 +1,5 @@
 # Pokemon Pokédex
+
 ![pokedex2](https://github.com/jorgensean/jorgensean-pokedex/assets/3663199/00f6a7b4-f7e8-451c-bb10-0d1ca7c64050)
 
 A working Pokédex! Data (including most image assets) is pulled using PokeAPI's free static data.
@@ -10,14 +11,16 @@ A working Pokédex! Data (including most image assets) is pulled using PokeAPI's
 - RTK Query for PokeAPI requests/caching
 - Redux for state storage
 
-Project created using 
+Project created using
+
 - [React](https://react.dev/)
-- [Vite](https://vitejs.dev/) 
+- [Vite](https://vitejs.dev/)
 - [Redux](https://redux.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [PokeAPI Data](https://pokeapi.co/)
 
 ## Installation
+
 - `npm install` (npm chosen because it has the widest general support)
 - `npm run dev`
 - [Pokedex](http://localhost:8080/)
